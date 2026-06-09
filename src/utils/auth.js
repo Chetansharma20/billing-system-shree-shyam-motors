@@ -1,6 +1,6 @@
 export const login = (username, password) => {
     // Simple hardcoded check
-    if (username === 'zelio' && password === '2026') {
+    if (username === 'SSM' && password === 'Zeliossmknd') {
         localStorage.setItem('isAuthenticated', 'true');
         return true;
     }
