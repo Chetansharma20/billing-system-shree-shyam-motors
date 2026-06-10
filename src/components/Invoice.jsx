@@ -10,7 +10,7 @@ const SHOP_DETAILS = {
     mobile: "+91 9421685385",
     gstin: "27CKZPA0590E1Z0",
     hsn: "87116010",
-    pan: "CKZPA0590E",
+    // pan: "CKZPA0590E",
     email: ""
 };
 
@@ -111,8 +111,8 @@ const Invoice = React.forwardRef(({ data }, ref) => {
                             </p>
                             <p className="text-[10px] text-gray-700 mt-0.5">
                                 {/* <span className="font-semibold">Mobile:</span> {SHOP_DETAILS.mobile} | */}
-                                <span className="font-bold ml-3">GSTIN:</span> {SHOP_DETAILS.gstin} |
-                                <span className="font-bold ml-3">PAN Number:</span> {SHOP_DETAILS.pan}
+                                <span className="font-bold ml-3">GSTIN:</span> {SHOP_DETAILS.gstin} 
+                                
                             </p>
                         </div>
 
@@ -265,7 +265,7 @@ const Invoice = React.forwardRef(({ data }, ref) => {
                         <h4 className="font-black text-gray-900 mb-2 uppercase text-sm">Terms & Conditions:</h4>
                         <ol className="list-decimal list-inside space-y-1 font-medium">
                             <li>Goods once sold will not be taken back.</li>
-                            <li>Motor and controller carry a warranty of 2 years.</li>
+                            <li>Motor, controller and chassis carry a warranty of 2 years.</li>
                             <li>Battery and charger carry a warranty of 1 year.</li>
                             <li>No warranty is provided for physical damage or breakage.</li>
                             <li>Any service, fitting, inspection, or repair work carried out shall attract labour charges as per prevailing rates.</li>

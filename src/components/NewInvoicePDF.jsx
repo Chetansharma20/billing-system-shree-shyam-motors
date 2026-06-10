@@ -552,7 +552,7 @@ const InvoicePDF = ({ data, logoBase64, whatsappBase64 }) => {
                 <View style={styles.termsSection}>
                     <Text style={styles.termsTitle}>Terms & Conditions:</Text>
                     <Text style={styles.termItem}>1. Goods once sold will not be taken back.</Text>
-                    <Text style={styles.termItem}>2. Motor and controller carry a warranty of 2 years.</Text>
+                    <Text style={styles.termItem}>2. Motor, controller and chassis carry a warranty of 2 years.</Text>
                     <Text style={styles.termItem}>3. Battery and charger carry a warranty of 1 year.</Text>
                     <Text style={styles.termItem}>4. No warranty is provided for physical damage or breakage.</Text>
                     <Text style={styles.termItem}>5. Any service, fitting, inspection, or repair work carried out shall attract labour charges as per prevailing rates.</Text>
