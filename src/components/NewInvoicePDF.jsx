@@ -372,8 +372,8 @@ const InvoicePDF = ({ data, logoBase64, whatsappBase64 }) => {
                         <Text style={styles.shopName}>{SHOP_DETAILS.name}</Text>
                         <Text style={styles.shopAddress}>{SHOP_DETAILS.address}</Text>
                         <Text style={styles.shopGst}>
-                            <Text style={styles.boldText}>GSTIN: </Text>{SHOP_DETAILS.gstin}  |
-                            <Text style={styles.boldText}>  PAN Number: </Text>{SHOP_DETAILS.pan}
+                            <Text style={styles.boldText}>GSTIN: </Text>{SHOP_DETAILS.gstin} 
+                            {/* <Text style={styles.boldText}>  PAN Number: </Text>{SHOP_DETAILS.pan} */}
                         </Text>
                     </View>
 
