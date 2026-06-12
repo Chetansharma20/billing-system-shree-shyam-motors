@@ -45,19 +45,19 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         fontFamily: 'Times-Roman',
-        color: '#C49A2F', // Updated to Gold per user request
+        color: '#B8860B', // Deep vibrant gold - prints clearly on paper
         textTransform: 'uppercase',
         letterSpacing: 1,
         marginBottom: 4,
     },
     shopAddress: {
         fontSize: 9,
-        color: '#4B5563', // Gray 600
+        color: '#000000',
         marginBottom: 2,
     },
     shopGst: {
         fontSize: 8,
-        color: '#4B5563',
+        color: '#000000',
     },
     invoiceDetails: {
         width: 120,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     invoiceText: {
         fontSize: 9,
-        color: '#374151',
+        color: '#000000',
         marginBottom: 2,
     },
     boldText: {
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     customerRow: {
         fontSize: 9,
         marginBottom: 3,
-        color: '#374151',
+        color: '#000000',
     },
     // Table Section
     table: {
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     },
     gstNote: {
         fontSize: 8,
-        color: '#4b5563',
+        color: '#000000',
         fontStyle: 'italic',
         marginTop: 4,
     },
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     },
     termItem: {
         fontSize: 8,
-        color: '#374151',
+        color: '#000000',
         marginBottom: 3,
     },
     // Signatures
@@ -253,19 +253,19 @@ const styles = StyleSheet.create({
     },
     signatureSubLabel: {
         fontSize: 8,
-        color: '#4b5563',
+        color: '#000000',
     },
     footer: {
         textAlign: 'center',
         fontSize: 8,
-        color: '#6b7280',
+        color: '#000000',
         fontStyle: 'italic',
         marginTop: 15,
     },
     vehicleDetails: {
         marginTop: 6,
         fontSize: 8,
-        color: '#374151',
+        color: '#000000',
     },
     vehicleRow: {
         marginBottom: 2,
@@ -394,7 +394,7 @@ const InvoicePDF = ({ data, logoBase64, whatsappBase64 }) => {
                                 {whatsappBase64 && <Image style={{ width: 10, height: 9 }} src={whatsappBase64} />}
                             </View>
                             <View style={{ paddingTop: 3 }}>
-                                <Text style={{ fontSize: 10, color: '#374151' }}>{SHOP_DETAILS.mobile}</Text>
+                                <Text style={{ fontSize: 10, color: '#000000' }}>{SHOP_DETAILS.mobile}</Text>
                             </View>
                         </View>
                     </View>
@@ -448,7 +448,7 @@ const InvoicePDF = ({ data, logoBase64, whatsappBase64 }) => {
                                     <Text style={styles.boldText}>
                                         {vehicleModel?.toUpperCase()}{color ? ` - ${color.toUpperCase()}` : ''}
                                     </Text>
-                                    <Text style={{ fontSize: 8, color: '#4b5563', fontStyle: 'italic', marginTop: 2 }}>
+                                    <Text style={{ fontSize: 8, color: '#000000', fontStyle: 'italic', marginTop: 2 }}>
                                         Electric Scooter (Low-Speed) Two-Wheeler
                                     </Text>
                                 </View>
