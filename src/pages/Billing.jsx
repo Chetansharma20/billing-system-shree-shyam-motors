@@ -16,11 +16,14 @@ import {
 import { pdf } from "@react-pdf/renderer";
 import Invoice from "../components/Invoice";
 import InvoicePDF from "../components/NewInvoicePDF";
+import InvoiceV2 from "../components/InvoiceV2";
+import InvoicePDFV2 from "../components/NewInvoicePDFV2";
 import logo from "../assets/zelio.png";
 import whatsappIcon from "../assets/whatsapp-icon.png";
 
 const INITIAL_STATE = {
   billType: "tax_invoice", // 'tax_invoice' or 'booking_receipt'
+  templateVersion: "standard",
   customerName: "",
   mobileNumber: "",
   address: "",
@@ -189,8 +192,9 @@ const Billing = () => {
     }
 
     try {
+      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : InvoicePDF;
       const blob = await pdf(
-        <InvoicePDF
+        <PDFComponent
           data={dataToUse}
           logoBase64={logo}
           whatsappBase64={whatsappIcon}
@@ -238,8 +242,9 @@ const Billing = () => {
 
     try {
       // Generate PDF Blob
+      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : InvoicePDF;
       const blob = await pdf(
-        <InvoicePDF
+        <PDFComponent
           data={dataToUse}
           logoBase64={logo}
           whatsappBase64={whatsappIcon}
@@ -352,6 +357,35 @@ const Billing = () => {
                       className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                     />
                     <span className="text-sm font-medium text-gray-700">Booking Receipt</span>
+                  </label>
+                </div>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-md border mb-4">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Template Version *
+                </label>
+                <div className="flex gap-6">
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="templateVersion"
+                      value="standard"
+                      checked={formData.templateVersion === "standard"}
+                      onChange={handleChange}
+                      className="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                    />
+                    <span className="text-sm font-medium text-gray-700">Standard</span>
+                  </label>
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="templateVersion"
+                      value="v2"
+                      checked={formData.templateVersion === "v2"}
+                      onChange={handleChange}
+                      className="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                    />
+                    <span className="text-sm font-medium text-gray-700">V2 (No Chassis, 1 Yr Motor Warranty)</span>
                   </label>
                 </div>
               </div>
@@ -482,19 +516,21 @@ const Billing = () => {
                       placeholder="e.g., Red"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Chassis No. *
-                    </label>
-                    <input
-                      type="text"
-                      name="chassisNo"
-                      value={formData.chassisNo}
-                      onChange={handleChange}
-                      className="w-full px-3 py-3 text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="Enter chassis number"
-                    />
-                  </div>
+                  {formData.templateVersion !== "v2" && (
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Chassis No. *
+                      </label>
+                      <input
+                        type="text"
+                        name="chassisNo"
+                        value={formData.chassisNo}
+                        onChange={handleChange}
+                        className="w-full px-3 py-3 text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Enter chassis number"
+                      />
+                    </div>
+                  )}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Motor No. *
@@ -743,7 +779,11 @@ const Billing = () => {
                   className="bg-white shadow-sm mx-auto transform scale-50 origin-top lg:scale-75"
                   style={{ width: "210mm", minHeight: "297mm" }}
                 >
-                  <Invoice ref={componentRef} data={previewData} />
+                  {previewData.templateVersion === 'v2' ? (
+                    <InvoiceV2 ref={componentRef} data={previewData} />
+                  ) : (
+                    <Invoice ref={componentRef} data={previewData} />
+                  )}
                 </div>
               </div>
             </div>

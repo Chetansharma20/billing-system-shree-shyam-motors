@@ -111,8 +111,8 @@ const Invoice = React.forwardRef(({ data }, ref) => {
                             </p>
                             <p className="text-[10px] text-gray-700 mt-0.5">
                                 {/* <span className="font-semibold">Mobile:</span> {SHOP_DETAILS.mobile} | */}
-                                <span className="font-bold ml-3">GSTIN:</span> {SHOP_DETAILS.gstin} 
-                                
+                                <span className="font-bold ml-3">GSTIN:</span> {SHOP_DETAILS.gstin}
+
                             </p>
                         </div>
 
@@ -291,7 +291,7 @@ const Invoice = React.forwardRef(({ data }, ref) => {
                         </div>
                     </div>
                 </div>
- 
+
             </div>
         </div>
     );

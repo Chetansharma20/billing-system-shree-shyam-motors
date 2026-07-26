@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 
-// Lazy load pages for better performance
 const Login = lazy(() => import('./pages/Login'));
 const Billing = lazy(() => import('./pages/Billing'));
 
