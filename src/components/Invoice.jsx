@@ -263,12 +263,17 @@ const Invoice = React.forwardRef(({ data }, ref) => {
                     {/* Terms & Conditions */}
                     <div className="text-xs text-gray-700 mb-4">
                         <h4 className="font-black text-gray-900 mb-2 uppercase text-sm">Terms & Conditions:</h4>
-                        <ol className="list-decimal list-inside space-y-1 font-medium">
-                            <li>Goods once sold will not be taken back.</li>
-                            <li>Motor, controller and chassis carry a warranty of 2 years.</li>
-                            <li>Battery and charger carry a warranty of 1 year.</li>
-                            <li>No warranty is provided for physical damage or breakage.</li>
+                        <ol className="list-decimal list-inside space-y-0.5 font-medium text-[10px]">
+                            <li>Goods once sold will not be taken back, exchanged, or refunded.</li>
+                            <li>Motor, Controller and Chassis carry a warranty of 2 years. Battery & Charger carry a warranty of 1 year.</li>
+                            <li>Vehicle delivered in good condition; no claims regarding physical damage, accessories, or shortages will be entertained after delivery.</li>
+                            <li>Customer must verify chassis number, motor number, model, colour, and invoice details before taking delivery.</li>
+                            <li>Warranty is provided solely by the manufacturer as per the warranty booklet. Shree Shyam Enterprises shall not be liable for warranty claims.</li>
+                            <li>Regular servicing at the prescribed intervals is mandatory to maintain warranty validity.</li>
+                            <li>Warranty is void if the vehicle is modified, tampered with, misused, overloaded, involved in an accident, repaired by unauthorized persons, or damaged due to water ingress, fire, or natural calamities.</li>
+                            <li>Maximum Speed: 25 km/h. Any modification or tampering is at the customer’s risk. Shree Shyam Enterprises shall not be liable.</li>
                             <li>Any service, fitting, inspection, or repair work carried out shall attract labour charges as per prevailing rates.</li>
+                            <li>Delivery is deemed complete upon the customer’s signature on this delivery note/invoice.</li>
                         </ol>
                     </div>
 

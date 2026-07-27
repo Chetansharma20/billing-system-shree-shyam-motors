@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     termItem: {
         fontSize: 8,
         color: '#000000',
-        marginBottom: 3,
+        marginBottom: 2,
     },
     // Signatures
     signaturesContainer: {
@@ -550,11 +550,16 @@ const InvoicePDFV2 = ({ data, logoBase64, whatsappBase64 }) => {
                 {/* Terms & Conditions */}
                 <View style={styles.termsSection}>
                     <Text style={styles.termsTitle}>Terms & Conditions:</Text>
-                    <Text style={styles.termItem}>1. Goods once sold will not be taken back.</Text>
-                    <Text style={styles.termItem}>2. Motor and controller carry a warranty of 1 year.</Text>
-                    <Text style={styles.termItem}>3. Battery and charger carry a warranty of 1 year.</Text>
-                    <Text style={styles.termItem}>4. No warranty is provided for physical damage or breakage.</Text>
-                    <Text style={styles.termItem}>5. Any service, fitting, inspection, or repair work carried out shall attract labour charges as per prevailing rates.</Text>
+                    <Text style={styles.termItem}>1. Goods once sold will not be taken back, exchanged, or refunded.</Text>
+                    <Text style={styles.termItem}>2. Motor, Controller and Chassis carry a warranty of 1 year. Battery & Charger carry a warranty of 1 year.</Text>
+                    <Text style={styles.termItem}>3. Vehicle delivered in good condition; no claims regarding physical damage, accessories, or shortages will be entertained after delivery.</Text>
+                    <Text style={styles.termItem}>4. Customer must verify chassis number, motor number, model, colour, and invoice details before taking delivery.</Text>
+                    <Text style={styles.termItem}>5. Warranty is provided solely by the manufacturer as per the warranty booklet. Shree Shyam Enterprises shall not be liable for warranty claims.</Text>
+                    <Text style={styles.termItem}>6. Regular servicing at the prescribed intervals is mandatory to maintain warranty validity.</Text>
+                    <Text style={styles.termItem}>7. Warranty is void if the vehicle is modified, tampered with, misused, overloaded, involved in an accident, repaired by unauthorized persons, or damaged due to water ingress, fire, or natural calamities.</Text>
+                    <Text style={styles.termItem}>8. Maximum Speed: 25 km/h. Any modification or tampering is at the customer’s risk. Shree Shyam Enterprises shall not be liable.</Text>
+                    <Text style={styles.termItem}>9. Any service, fitting, inspection, or repair work carried out shall attract labour charges as per prevailing rates.</Text>
+                    <Text style={styles.termItem}>10. Delivery is deemed complete upon the customer’s signature on this delivery note/invoice.</Text>
                 </View>
 
                 {/* Signatures */}
