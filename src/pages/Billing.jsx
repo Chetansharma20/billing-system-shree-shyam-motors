@@ -516,21 +516,19 @@ const Billing = () => {
                       placeholder="e.g., Red"
                     />
                   </div>
-                  {formData.templateVersion !== "v2" && (
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Chassis No. *
-                      </label>
-                      <input
-                        type="text"
-                        name="chassisNo"
-                        value={formData.chassisNo}
-                        onChange={handleChange}
-                        className="w-full px-3 py-3 text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Enter chassis number"
-                      />
-                    </div>
-                  )}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Chassis No. *
+                    </label>
+                    <input
+                      type="text"
+                      name="chassisNo"
+                      value={formData.chassisNo}
+                      onChange={handleChange}
+                      className="w-full px-3 py-3 text-base border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Enter chassis number"
+                    />
+                  </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Motor No. *

@@ -203,6 +203,7 @@ const Invoice = React.forwardRef(({ data }, ref) => {
 
                                         {/* Vehicle Specific Details - Sequential */}
                                         <div className="mt-3 text-xs text-slate-800 space-y-1 font-medium">
+                                            {chassisNo && <p><span className="font-bold">Chassis No:</span> {chassisNo}</p>}
                                             {motorNo && <p><span className="font-bold">Motor No:</span> {motorNo}</p>}
                                             {batteryNo && <p><span className="font-bold">Battery No:</span> {batteryNo}</p>}
                                             {chargerNo && <p><span className="font-bold">Charger No:</span> {chargerNo}</p>}

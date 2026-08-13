@@ -411,21 +411,21 @@ const InvoicePDF = ({ data, logoBase64, whatsappBase64 }) => {
                             <Text style={styles.customerRow}>
                                 <Text style={styles.boldText}>Mobile: </Text>{mobileNumber}
                             </Text>
-                            {customerGst && (
+                            {customerGst ? (
                                 <Text style={styles.customerRow}>
                                     <Text style={styles.boldText}>GSTIN: </Text>{customerGst.toUpperCase()}
                                 </Text>
-                            )}
+                            ) : null}
                         </View>
                         <View style={styles.customerCol}>
                             <Text style={styles.customerRow}>
                                 <Text style={styles.boldText}>Address: </Text>{address}
                             </Text>
-                            {customerPan && (
+                            {customerPan ? (
                                 <Text style={styles.customerRow}>
                                     <Text style={styles.boldText}>PAN: </Text>{customerPan.toUpperCase()}
                                 </Text>
-                            )}
+                            ) : null}
                         </View>
                     </View>
                 </View>
@@ -490,10 +490,10 @@ const InvoicePDF = ({ data, logoBase64, whatsappBase64 }) => {
                                         Electric Scooter (Low-Speed) Two-Wheeler
                                     </Text>
                                     <View style={styles.vehicleDetails}>
-                                        {chassisNo && <Text style={styles.vehicleRow}><Text style={styles.boldText}>Chassis No: </Text>{chassisNo}</Text>}
-                                        {motorNo && <Text style={styles.vehicleRow}><Text style={styles.boldText}>Motor No: </Text>{motorNo}</Text>}
-                                        {batteryNo && <Text style={styles.vehicleRow}><Text style={styles.boldText}>Battery No: </Text>{batteryNo}</Text>}
-                                        {chargerNo && <Text style={styles.vehicleRow}><Text style={styles.boldText}>Charger No: </Text>{chargerNo}</Text>}
+                                        {chassisNo ? <Text style={styles.vehicleRow}><Text style={styles.boldText}>Chassis No: </Text>{chassisNo}</Text> : null}
+                                        {motorNo ? <Text style={styles.vehicleRow}><Text style={styles.boldText}>Motor No: </Text>{motorNo}</Text> : null}
+                                        {batteryNo ? <Text style={styles.vehicleRow}><Text style={styles.boldText}>Battery No: </Text>{batteryNo}</Text> : null}
+                                        {chargerNo ? <Text style={styles.vehicleRow}><Text style={styles.boldText}>Charger No: </Text>{chargerNo}</Text> : null}
                                     </View>
                                 </View>
                                 <Text style={[styles.tableCell, styles.tableCellHsn]}>{SHOP_DETAILS.hsn}</Text>
