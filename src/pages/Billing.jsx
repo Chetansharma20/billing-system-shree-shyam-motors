@@ -209,7 +209,13 @@ const Billing = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      
+      // On mobile browsers, revoking the blob URL immediately can cause the download to fail 
+      // or not be stored in the device's file manager because the OS download manager 
+      // hasn't finished reading from the blob URL. Delaying by 10 seconds fixes this.
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+      }, 10000);
     } catch (error) {
       console.error("Error generating PDF:", error);
       alert("Error generating PDF. Please try again.");
@@ -275,7 +281,10 @@ const Billing = () => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+        }, 10000);
 
         const waUrl = `https://wa.me/${dataToUse.mobileNumber ? "91" + dataToUse.mobileNumber : ""
           }?text=Please find the attached invoice.`;
