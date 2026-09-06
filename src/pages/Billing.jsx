@@ -18,6 +18,8 @@ import Invoice from "../components/Invoice";
 import InvoicePDF from "../components/NewInvoicePDF";
 import InvoiceV2 from "../components/InvoiceV2";
 import InvoicePDFV2 from "../components/NewInvoicePDFV2";
+import FinanceInvoice from "../components/FinanceInvoice";
+import FinanceInvoicePDF from "../components/FinanceInvoicePDF";
 import logo from "../assets/zelio.png";
 import whatsappIcon from "../assets/whatsapp-icon.png";
 
@@ -192,7 +194,7 @@ const Billing = () => {
     }
 
     try {
-      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : InvoicePDF;
+      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : dataToUse.templateVersion === 'finance' ? FinanceInvoicePDF : InvoicePDF;
       const blob = await pdf(
         <PDFComponent
           data={dataToUse}
@@ -248,7 +250,7 @@ const Billing = () => {
 
     try {
       // Generate PDF Blob
-      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : InvoicePDF;
+      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : dataToUse.templateVersion === 'finance' ? FinanceInvoicePDF : InvoicePDF;
       const blob = await pdf(
         <PDFComponent
           data={dataToUse}
@@ -395,6 +397,17 @@ const Billing = () => {
                       className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                     />
                     <span className="text-sm font-medium text-gray-700">V2 (No Chassis, 1 Yr Motor Warranty)</span>
+                  </label>
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="templateVersion"
+                      value="finance"
+                      checked={formData.templateVersion === "finance"}
+                      onChange={handleChange}
+                      className="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                    />
+                    <span className="text-sm font-medium text-gray-700">Finance</span>
                   </label>
                 </div>
               </div>
@@ -663,39 +676,41 @@ const Billing = () => {
                 </div>
               </div>
 
-              <div className="border-t pt-4 mt-4">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
-                  GST Type *
-                </h3>
-                <div className="space-y-3">
-                  <label className="flex items-center space-x-3 cursor-pointer p-3 border border-gray-300 rounded-md hover:bg-gray-50">
-                    <input
-                      type="radio"
-                      name="gstType"
-                      value="cgst_sgst"
-                      checked={formData.gstType === "cgst_sgst"}
-                      onChange={handleChange}
-                      className="w-5 h-5 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="text-sm font-medium text-gray-700">
-                      CGST (2.5%) + SGST (2.5%) = 5%
-                    </span>
-                  </label>
-                  <label className="flex items-center space-x-3 cursor-pointer p-3 border border-gray-300 rounded-md hover:bg-gray-50">
-                    <input
-                      type="radio"
-                      name="gstType"
-                      value="igst"
-                      checked={formData.gstType === "igst"}
-                      onChange={handleChange}
-                      className="w-5 h-5 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span className="text-sm font-medium text-gray-700">
-                      IGST (5%)
-                    </span>
-                  </label>
+              {formData.templateVersion !== "finance" && (
+                <div className="border-t pt-4 mt-4">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+                    GST Type *
+                  </h3>
+                  <div className="space-y-3">
+                    <label className="flex items-center space-x-3 cursor-pointer p-3 border border-gray-300 rounded-md hover:bg-gray-50">
+                      <input
+                        type="radio"
+                        name="gstType"
+                        value="cgst_sgst"
+                        checked={formData.gstType === "cgst_sgst"}
+                        onChange={handleChange}
+                        className="w-5 h-5 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-sm font-medium text-gray-700">
+                        CGST (2.5%) + SGST (2.5%) = 5%
+                      </span>
+                    </label>
+                    <label className="flex items-center space-x-3 cursor-pointer p-3 border border-gray-300 rounded-md hover:bg-gray-50">
+                      <input
+                        type="radio"
+                        name="gstType"
+                        value="igst"
+                        checked={formData.gstType === "igst"}
+                        onChange={handleChange}
+                        className="w-5 h-5 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="text-sm font-medium text-gray-700">
+                        IGST (5%)
+                      </span>
+                    </label>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Mobile Action Buttons */}
               <div className="lg:hidden pt-4 space-y-3">
@@ -788,6 +803,8 @@ const Billing = () => {
                 >
                   {previewData.templateVersion === 'v2' ? (
                     <InvoiceV2 ref={componentRef} data={previewData} />
+                  ) : previewData.templateVersion === 'finance' ? (
+                    <FinanceInvoice ref={componentRef} data={previewData} />
                   ) : (
                     <Invoice ref={componentRef} data={previewData} />
                   )}
