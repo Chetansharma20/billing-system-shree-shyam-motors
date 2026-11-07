@@ -15,13 +15,13 @@ const SHOP_DETAILS = {
 
 // Orange-black theme colors
 const THEME = {
-    primary: '#E65100',       // deep orange
-    primaryLight: '#FF6D00',  // bright orange
+    primary: '#FB923C',       // light vibrant orange
+    primaryLight: '#FED7AA',  // very light pastel orange
     headerBg: '#1a1a1a',      // near black
-    accentBorder: '#E65100',  // orange border
-    tableBg: '#FFF3E0',       // very light orange tint for header
-    totalBg: '#E65100',       // orange for total row
-    totalText: '#FFFFFF',
+    accentBorder: '#FB923C',  // orange border
+    tableBg: '#FFF7ED',       // very light orange tint
+    totalBg: '#FED7AA',       // soft light orange for total row
+    totalText: '#1a1a1a',     // crisp dark text for readability
 };
 
 const ErengentoInvoice = React.forwardRef(({ data }, ref) => {
@@ -112,7 +112,7 @@ const ErengentoInvoice = React.forwardRef(({ data }, ref) => {
                         {/* Center: Shop Name & Address */}
                         <div className="flex-1 text-center">
                             <h1 className="font-black font-serif uppercase leading-tight tracking-wide mb-0.5"
-                                style={{ fontSize: '26px', color: THEME.headerBg }}>
+                                style={{ fontSize: '26px', color: THEME.primary }}>
                                 {SHOP_DETAILS.name}
                             </h1>
                             {/* Orange underline accent */}
@@ -335,9 +335,10 @@ const ErengentoInvoice = React.forwardRef(({ data }, ref) => {
                                         </td>
                                     </tr>
                                 )}
-                                {/* Total Row — Orange */}
-                                <tr style={{ backgroundColor: THEME.primary, color: '#fff' }}>
-                                    <td colSpan="5" className="p-3 text-right font-black text-base">Total Amount (₹)</td>
+                                {/* Total Row — Light Orange */}
+                                <tr style={{ backgroundColor: THEME.totalBg, color: THEME.totalText }}>
+                                    <td colSpan="5" className="p-3 text-right font-black text-base"
+                                        style={{ borderRight: '1px solid #ddd' }}>Total Amount (₹)</td>
                                     <td className="p-3 text-right font-black text-base">
                                         {totalAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                     </td>

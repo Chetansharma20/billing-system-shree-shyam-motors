@@ -54,14 +54,14 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         fontFamily: 'Times-Roman',
-        color: '#1a1a1a',
+        color: '#FB923C',
         textTransform: 'uppercase',
         letterSpacing: 1,
         marginBottom: 2,
     },
     shopNameAccent: {
         height: 2,
-        backgroundColor: '#E65100',
+        backgroundColor: '#FB923C',
         marginBottom: 4,
         width: '60%',
     },
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     dealerTag: {
         fontSize: 8,
-        color: '#E65100',
+        color: '#FB923C',
         fontWeight: 'bold',
         textTransform: 'uppercase',
         letterSpacing: 1,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         fontSize: 9,
         color: '#ffffff',
         borderRightWidth: 1,
-        borderRightColor: '#E65100',
+        borderRightColor: '#FB923C',
     },
     tableRow: {
         flexDirection: 'row',
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     },
     totalRow: {
         flexDirection: 'row',
-        backgroundColor: '#E65100',
+        backgroundColor: '#FED7AA',
         borderWidth: 2,
         borderColor: '#1a1a1a',
     },
@@ -193,9 +193,9 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         fontWeight: 900,
         fontSize: 11,
-        color: '#ffffff',
+        color: '#000000',
         borderRightWidth: 1,
-        borderRightColor: '#ffffff',
+        borderRightColor: '#1a1a1a',
     },
     totalValue: {
         width: '20%',
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         fontWeight: 900,
         fontSize: 11,
-        color: '#ffffff',
+        color: '#000000',
     },
     wordsRow: {
         flexDirection: 'row',
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     // ── Terms ──
     termsSection: {
         borderTopWidth: 3,
-        borderTopColor: '#E65100',
+        borderTopColor: '#FB923C',
         paddingTop: 10,
         marginTop: 10,
     },
@@ -335,7 +335,7 @@ const ErengentoInvoicePDF = ({ data, logoBase64, whatsappBase64 }) => {
                     {/* Shop Details */}
                     <View style={styles.shopDetails}>
                         <Text style={styles.shopName}>{SHOP_DETAILS.name}</Text>
-                        <View style={{ height: 2, backgroundColor: '#E65100', width: '60%', alignSelf: 'center', marginBottom: 4 }} />
+                        <View style={{ height: 2, backgroundColor: '#FB923C', width: '60%', alignSelf: 'center', marginBottom: 4 }} />
                         <Text style={styles.shopAddress}>{SHOP_DETAILS.address}</Text>
                         <Text style={styles.shopGst}>
                             <Text style={styles.boldText}>GSTIN: </Text>{SHOP_DETAILS.gstin}
