@@ -20,6 +20,8 @@ import InvoiceV2 from "../components/InvoiceV2";
 import InvoicePDFV2 from "../components/NewInvoicePDFV2";
 import FinanceInvoice from "../components/FinanceInvoice";
 import FinanceInvoicePDF from "../components/FinanceInvoicePDF";
+import ErengentoInvoice from "../components/ErengentoInvoice";
+import ErengentoInvoicePDF from "../components/ErengentoInvoicePDF";
 import logo from "../assets/zelio.png";
 import whatsappIcon from "../assets/whatsapp-icon.png";
 
@@ -194,7 +196,7 @@ const Billing = () => {
     }
 
     try {
-      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : dataToUse.templateVersion === 'finance' ? FinanceInvoicePDF : InvoicePDF;
+      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : dataToUse.templateVersion === 'finance' ? FinanceInvoicePDF : (dataToUse.templateVersion === 'ereganto' || dataToUse.templateVersion === 'erengento') ? ErengentoInvoicePDF : InvoicePDF;
       const blob = await pdf(
         <PDFComponent
           data={dataToUse}
@@ -250,7 +252,7 @@ const Billing = () => {
 
     try {
       // Generate PDF Blob
-      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : dataToUse.templateVersion === 'finance' ? FinanceInvoicePDF : InvoicePDF;
+      const PDFComponent = dataToUse.templateVersion === 'v2' ? InvoicePDFV2 : dataToUse.templateVersion === 'finance' ? FinanceInvoicePDF : (dataToUse.templateVersion === 'ereganto' || dataToUse.templateVersion === 'erengento') ? ErengentoInvoicePDF : InvoicePDF;
       const blob = await pdf(
         <PDFComponent
           data={dataToUse}
@@ -259,8 +261,7 @@ const Billing = () => {
         />
       ).toBlob();
 
-      const file = new File(
-        [blob],
+      const file = new File(        [blob],
         `Invoice-${dataToUse.invoiceNumber || dataToUse.customerName || "New"
         }.pdf`,
         { type: "application/pdf" }
@@ -375,7 +376,7 @@ const Billing = () => {
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Template Version *
                 </label>
-                <div className="flex gap-6">
+                <div className="flex gap-6 flex-wrap">
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
                       type="radio"
@@ -386,6 +387,17 @@ const Billing = () => {
                       className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                     />
                     <span className="text-sm font-medium text-gray-700">Standard</span>
+                  </label>
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="templateVersion"
+                      value="ereganto"
+                      checked={formData.templateVersion === "ereganto" || formData.templateVersion === "erengento"}
+                      onChange={handleChange}
+                      className="w-4 h-4 text-orange-500 focus:ring-orange-400"
+                    />
+                    <span className="text-sm font-medium text-orange-600 font-semibold">ereganto</span>
                   </label>
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
@@ -805,6 +817,8 @@ const Billing = () => {
                     <InvoiceV2 ref={componentRef} data={previewData} />
                   ) : previewData.templateVersion === 'finance' ? (
                     <FinanceInvoice ref={componentRef} data={previewData} />
+                  ) : (previewData.templateVersion === 'ereganto' || previewData.templateVersion === 'erengento') ? (
+                    <ErengentoInvoice ref={componentRef} data={previewData} />
                   ) : (
                     <Invoice ref={componentRef} data={previewData} />
                   )}
